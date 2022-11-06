@@ -1,0 +1,45 @@
+.catalog {
+    display: flex;
+    flex-direction: row;
+}
+
+.cards-container {
+    box-shadow: 5px 5px 0px aquamarine;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    justify-items: center;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .catalog {
+        flex-direction: column;
+    }
+
+    .filter-container {
+        width: 100%;
+        align-items: center;
+    }
+
+    .filter-mobile-container {
+        display: flex;
+        flex-direction: column;
+        align-items: self-end;
+    }
+
+    .price-sort-controls {
+        align-self: center;
+    }
+}
+
+@media (min-width: 700px) {
+    .catalog {
+        flex-direction: row;
+    }
+
+    .filter-container {
+        width: 220px;
+    }
+}
+

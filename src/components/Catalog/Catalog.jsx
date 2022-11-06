@@ -1,4 +1,6 @@
 import "./Catalog.css";
+import { BookCard } from "./BookCard/BookCard";
+
 
 export const Catalog = ({books, buttonHandler, displayedBooks, setDisplayedBooks}) => {
     return(
@@ -8,7 +10,18 @@ export const Catalog = ({books, buttonHandler, displayedBooks, setDisplayedBooks
                 {displayedBooks.map(
                     (book) => {
                         return(
-                            <div></div>
+                            <BookCard 
+                                key={`${book.title}-${book.writer}`}
+                                title={book.title}
+                                writer={book.writer}
+                                image={book.image}
+                                year={book.year}
+                                genres={book.genre}
+                                id={book.id}
+                                price={book.price}
+                                buttonHandler={buttonHandler}
+                                isChosen={book.isChosen}
+                            />
                         )
                     }
                 )}

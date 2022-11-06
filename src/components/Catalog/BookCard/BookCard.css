@@ -1,0 +1,91 @@
+.card {
+    height: 520px;
+    width: 300px;
+    outline: 3px solid aquamarine;
+    border-radius: 15px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    transition: 0.7s ease-in-out;
+}
+
+.card:hover {
+    background-color: #c9fefe;
+    
+}
+
+.book-image {
+    /* width: 250px; */
+    height: 300px;
+    transition: 1s ease-in-out;
+}
+
+.book-image:hover {
+    transform: scale(1.03);
+}
+
+.card-title {
+    margin: 5px 0;
+}
+
+.writer {
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.year {
+    margin-top: 5px;
+}
+
+.genres {
+    font-size: smaller;
+    font-style: italic;
+}
+
+.price {
+    font-size: large;
+    color: #08b9b9;
+    font-weight: bold;
+}
+
+.add-button {
+    margin-top: 15px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: none;
+    outline: 3px solid aquamarine; 
+    box-sizing: border-box;
+    font-weight: bold;
+    color: white;
+    background-color: #14d2d2;
+}
+
+.add-button:hover {
+    cursor: pointer;
+    background-color: #32eaea;
+}
+
+.add-button:active {
+    outline: 1px solid #9bffff;
+    color: white;
+    background-color: #46f5f5;
+}
+
+.added-button {
+    color:#efefee;
+    background-color: #7b7878;
+    outline: 3px solid #7b7878;
+    border: none;
+}
+
+.added-button:hover {
+    background-color: #b6aeae;
+}
+
+.added-button:active {
+    outline: 1px solid #beb7b7;
+    background-color: #beb7b7;
+    border: none;
+}

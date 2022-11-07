@@ -10,11 +10,35 @@ function App() {
     const [ cartBooks, setCartBooks ] = useState([]);
     const [ displayedBooks, setDisplayedBooks ] = useState(BOOKS);
 
+    const buttonHandler = (id, isToggling) => {
+
+        const updateBooks = (arr) => {
+            let newBooks = [...arr];
+            newBooks = newBooks.map(book =>
+                {
+                    if (book.id === id) {
+                        let newBook = {...book};
+                        newBook.isChosen = isToggling ? !newBook.isChosen : false;
+                        return newBook;
+                    } else return book;
+                });
+                return newBooks;
+        }
+
+        const updatedBooks = updateBooks(books);
+
+        setBooks(updatedBooks);
+        setDisplayedBooks(updateBooks(displayedBooks));
+        
+        setCartBooks(updatedBooks.filter(book => book.isChosen));
+        // calculateSum(updatedBooks);
+    }
+
     return (
         <div className="App">
             <Header />
             <div className='main'>
-                <Catalog displayedBooks={displayedBooks}/>
+                <Catalog books={books} buttonHandler={buttonHandler} displayedBooks={displayedBooks} setDisplayedBooks={setDisplayedBooks}/>
             </div>
             <Footer />
         </div>

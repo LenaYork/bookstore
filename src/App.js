@@ -47,8 +47,8 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <Header />
+        <div className="app">
+            <Header setIsModalActive={setIsModalActive}/>
             <Modal 
                 isModalActive={isModalActive}
                 setIsModalActive={setIsModalActive}

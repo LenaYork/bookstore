@@ -1,0 +1,51 @@
+.modal-container {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.modal-container.active-modal {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: white;
+    height: 200px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-input {
+    width: 150px;
+}
+
+.submit-button {
+    padding: 8px 20px;
+    color: olive;
+    border: 1px solid aquamarine;
+    border-radius: 5px;
+}
+
+.submit-button:hover {
+    cursor: pointer;
+    background-color: #9df5f5;
+}
+
+.submit-button:active {
+    background-color: #6af1f1;
+}

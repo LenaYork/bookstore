@@ -1,0 +1,11 @@
+.input {
+    border: 1px solid aquamarine;
+    border-radius: 8px;
+    padding: 5px;
+    font-weight: bolder;
+    color: #088b8b;
+}
+
+.input:focus {
+    outline: 2px solid aquamarine;
+}

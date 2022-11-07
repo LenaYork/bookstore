@@ -4,9 +4,11 @@ import { Header } from "./components/Header/Header";
 import { Catalog } from "./components/Catalog/Catalog";
 import { Cart } from './components/Cart/Cart';
 import { Footer } from "./components/Footer/Footer";
+import { Modal } from './components/Modal/Modal';
 import { BOOKS } from "./components/BOOKS";
 
 function App() {
+    const [ isModalActive, setIsModalActive ] = useState(false);
     const [ books, setBooks ] = useState(BOOKS);
     const [ cartBooks, setCartBooks ] = useState([]);
     const [ cartSum, setCartSum ] = useState(0);
@@ -47,6 +49,10 @@ function App() {
     return (
         <div className="App">
             <Header />
+            <Modal 
+                isModalActive={isModalActive}
+                setIsModalActive={setIsModalActive}
+            />
             <div className='main'>
                 <Catalog books={books} buttonHandler={buttonHandler} displayedBooks={displayedBooks} setDisplayedBooks={setDisplayedBooks}/>
                 <Cart cartBooks={cartBooks} cartSum={cartSum} buttonHandler={buttonHandler}/>

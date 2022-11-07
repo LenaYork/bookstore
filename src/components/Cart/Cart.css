@@ -1,0 +1,10 @@
+.cart-welcome {
+    margin-bottom: 15px;
+}
+
+.total {
+    color: #08b9b9;
+    text-align: right;
+    margin-right: 10%;
+    font-weight: bold;
+}

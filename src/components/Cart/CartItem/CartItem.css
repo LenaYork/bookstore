@@ -1,0 +1,51 @@
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 2s;
+}
+
+.cart-item:hover {
+    background-color: aquamarine;
+    outline: 1px solid blueviolet;
+}
+
+.cart-book-image {
+    margin: 5px 0;
+    width: 45px;
+}
+
+.cart-writer {
+    font-style: italic;
+}
+
+.delete-item {
+    border-radius: 25%;
+    outline: 3px solid #fc7272;
+    padding: 5px 10px;
+    margin: 0 5px;
+    transition: 0.4s;
+}
+
+.delete-item:hover {
+    cursor: pointer;
+    background-color:#fe7979;
+    color: white;
+}
+
+.delete-item:active {
+    outline: 1px solid rgb(250, 43, 43);
+    background-color:#ee3c3c;
+} 
+
+@media (min-width: 500px) {
+    .cart-book-info{
+        width: 70%;
+    }
+}
+
+@media (max-width: 499px) {
+    .cart-book-info{
+        width: 50%;
+    }
+}

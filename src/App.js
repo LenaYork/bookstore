@@ -2,13 +2,23 @@ import './App.css';
 import { useState } from "react";
 import { Header } from "./components/Header/Header";
 import { Catalog } from "./components/Catalog/Catalog";
+import { Cart } from './components/Cart/Cart';
 import { Footer } from "./components/Footer/Footer";
 import { BOOKS } from "./components/BOOKS";
 
 function App() {
     const [ books, setBooks ] = useState(BOOKS);
     const [ cartBooks, setCartBooks ] = useState([]);
+    const [ cartSum, setCartSum ] = useState(0);
     const [ displayedBooks, setDisplayedBooks ] = useState(BOOKS);
+
+    const calculateSum = (booksList) => {
+        const prices = [];
+        const tempCartBooks = booksList.filter(book => book.isChosen);
+        tempCartBooks.forEach( elem => prices.push(elem.price));
+        const sum = prices ? prices.reduce( (a,b) => a+b, 0) : 0;
+        setCartSum(sum);
+    }
 
     const buttonHandler = (id, isToggling) => {
 
@@ -31,7 +41,7 @@ function App() {
         setDisplayedBooks(updateBooks(displayedBooks));
         
         setCartBooks(updatedBooks.filter(book => book.isChosen));
-        // calculateSum(updatedBooks);
+        calculateSum(updatedBooks);
     }
 
     return (
@@ -39,6 +49,7 @@ function App() {
             <Header />
             <div className='main'>
                 <Catalog books={books} buttonHandler={buttonHandler} displayedBooks={displayedBooks} setDisplayedBooks={setDisplayedBooks}/>
+                <Cart cartBooks={cartBooks} cartSum={cartSum} buttonHandler={buttonHandler}/>
             </div>
             <Footer />
         </div>

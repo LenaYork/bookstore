@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from "react";
+import { Routes, Route } from 'react-router-dom';
 import { Header } from "./components/Header/Header";
 import { Catalog } from "./components/Catalog/Catalog";
 import { Cart } from './components/Cart/Cart';
@@ -54,8 +55,10 @@ function App() {
                 setIsModalActive={setIsModalActive}
             />
             <div className='main'>
-                <Catalog books={books} buttonHandler={buttonHandler} displayedBooks={displayedBooks} setDisplayedBooks={setDisplayedBooks}/>
-                <Cart cartBooks={cartBooks} cartSum={cartSum} buttonHandler={buttonHandler}/>
+                <Routes>
+                    <Route path="/" element={<Catalog books={books} buttonHandler={buttonHandler} displayedBooks={displayedBooks} setDisplayedBooks={setDisplayedBooks} />} />
+                    <Route path="/cart" element={<Cart cartBooks={cartBooks} cartSum={cartSum} buttonHandler={buttonHandler}/>} />
+                </Routes>
             </div>
             <Footer />
         </div>

@@ -1,19 +1,27 @@
 import "./Header.css";
+import { Outlet, Link } from "react-router-dom";
 
-export const Header = () => {
+export const Header = ({setIsModalActive}) => {
+    
+    const loginHandler = () => {
+        setIsModalActive(true);
+    }
 
     return(
         <div className="header">
-            <h1 className="app-title">Book Store</h1>
-            
+            <Link to="./">
+                <h1 className="app-title">Book Store</h1>
+            </Link>
             <div className="header-icons">
                 <p
                     className="headerLink"
+                    onClick={loginHandler}
                 >
                     Log In
                 </p>
-                <a href="./cart" className="headerLink">Cart</a>
+                <Link to="./cart" className="headerLink">Cart</Link>
             </div>
+            <Outlet />
         </div>
     )
 }

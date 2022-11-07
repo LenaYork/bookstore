@@ -6,6 +6,8 @@ import { Footer } from "./components/Footer/Footer";
 import { BOOKS } from "./components/BOOKS";
 
 function App() {
+    const [ books, setBooks ] = useState(BOOKS);
+    const [ cartBooks, setCartBooks ] = useState([]);
     const [ displayedBooks, setDisplayedBooks ] = useState(BOOKS);
 
     return (

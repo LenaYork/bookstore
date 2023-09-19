@@ -20,6 +20,7 @@
 }
 
 .modal {
+    position: relative;
     padding: 20px;
     border-radius: 15px;
     background-color: white;
@@ -50,3 +51,25 @@
 .submit-button:active {
     background-color: #6af1f1;
 }
+
+.close-modal  {
+    border-radius: 25%;
+    position: absolute;
+    top: 1px;
+    right: -4px;
+    outline: 3px solid #fc7272;
+    padding: 5px 10px;
+    margin: 0 5px;
+    transition: 0.4s;
+}
+
+.close-modal:hover {
+    cursor: pointer;
+    background-color:#fe7979;
+    color: white;
+}
+
+.close-modal:active {
+    transform: scale(105%);
+    background-color:#ee3c3c;
+} 

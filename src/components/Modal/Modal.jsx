@@ -26,6 +26,12 @@ export const Modal = ({isModalActive, setIsModalActive}) => {
                 className="modal"
                 onClick={(e) => e.stopPropagation()}
             >
+                <div 
+                    className="close-modal"
+                    onClick={modalHandler}
+                    >
+                    X
+                </div>
                 <label htmlFor="userEmail">Your email:</label>
                 <Input 
                     id="userEmail"

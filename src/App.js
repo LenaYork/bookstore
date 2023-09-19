@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from 'react-router-dom';
 import { Header } from "./components/Header/Header";
 import { Catalog } from "./components/Catalog/Catalog";
@@ -11,9 +11,25 @@ import { BOOKS } from "./components/BOOKS";
 function App() {
     const [ isModalActive, setIsModalActive ] = useState(false);
     const [ books, setBooks ] = useState(BOOKS);
-    const [ cartBooks, setCartBooks ] = useState([]);
-    const [ cartSum, setCartSum ] = useState(0);
-    const [ displayedBooks, setDisplayedBooks ] = useState(BOOKS);
+    const [ cartBooks, setCartBooks ] = useState(JSON.parse(localStorage.getItem("cartBooks")) ?? []);
+    const [ cartSum, setCartSum ] = useState(localStorage.getItem("cartSum") ?? 0);
+    const [ displayedBooks, setDisplayedBooks ] = useState(JSON.parse(localStorage.getItem("displayedBooks"))  ?? BOOKS);
+
+    useEffect(() => {
+        const handleUnload = () => {
+            localStorage.setItem("displayedBooks", JSON.stringify(displayedBooks));
+            localStorage.setItem("cartBooks", JSON.stringify(cartBooks));
+            localStorage.setItem("cartSum", cartSum);
+          
+        }
+    
+        window.addEventListener('beforeunload', handleUnload);
+    
+        return () => {
+            window.removeEventListener('beforeunload', handleUnload);
+        }
+    }, [cartBooks, displayedBooks]);
+    
 
     const calculateSum = (booksList) => {
         const prices = [];

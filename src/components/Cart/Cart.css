@@ -1,3 +1,7 @@
+.cart {
+    min-height: 70vh;
+}
+
 .cart-welcome {
     margin-bottom: 15px;
 }

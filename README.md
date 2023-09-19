@@ -8,6 +8,8 @@ A book store where a user can:
 
 Modal log in window collects inputs visible in console as an object.
 
+Cart and book catalogue state is kept using local storage which makes the state available after page reload
+
 code: https://github.com/LenaYork/bookstore
 
 demo: https://lenayork.github.io/bookstore

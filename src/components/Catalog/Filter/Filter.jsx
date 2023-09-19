@@ -28,8 +28,8 @@ export const Filter = ({books, setDisplayedBooks}) => {
     return(
         <form 
             className="filter-container" 
-            // onChange={formHandler} 
-            onClick={formHandler} 
+            onChange={formHandler} 
+            // onClick={formHandler} 
             id="form"
         >
             <div className="filter-mobile-container">

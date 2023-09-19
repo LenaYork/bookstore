@@ -63,7 +63,7 @@ export const Filter = ({books, setDisplayedBooks}) => {
             
 
             <div className="sorting-selections">
-                <p className="filter-text">choose genres</p>
+                <p className="filter-text choose-genres-text">choose genres</p>
                 <select  
                     className="filter-select" 
                     multiple="multiple" 

@@ -22,22 +22,6 @@
     padding: 5px 0;
 }
 
-@media (max-width: 700px) {
-    .sorting-selections {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .filter-text{
-        padding-right: 10px;
-    }
-
-    .filter-select {
-        width: 200px;
-    }
-}
-
 #sortPriceInput {
     margin-top: 20px;
     transform:scale(1.5);
@@ -65,4 +49,26 @@
     outline: 1px solid #9bffff;
     color: white;
     background-color: #46f5f5;
+}
+
+@media (max-width: 700px) {
+    .sorting-selections {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .filter-text{
+        padding-right: 10px;
+    }
+
+    .filter-select {
+        width: 200px;
+    }
+}
+
+@media (min-width: 340px) and (max-width: 357px) {
+    .choose-genres-text {
+        text-align: center;
+    }
 }

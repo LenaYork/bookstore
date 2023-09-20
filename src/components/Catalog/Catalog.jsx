@@ -2,10 +2,23 @@ import "./Catalog.css";
 import { BookCard } from "./BookCard/BookCard";
 import { Filter } from "./Filter/Filter";
 
-export const Catalog = ({books, buttonHandler, displayedBooks, setDisplayedBooks}) => {
+export const Catalog = ({
+    books, 
+    buttonHandler, 
+    displayedBooks, 
+    setDisplayedBooks, 
+    filtersConfig,
+    setFiltersConfig
+}) => {
     return(
         <div className="catalog">
-            <Filter books={books} displayedBooks={displayedBooks} setDisplayedBooks={setDisplayedBooks}/>
+            <Filter 
+                books={books} 
+                displayedBooks={displayedBooks} 
+                setDisplayedBooks={setDisplayedBooks} 
+                filtersConfig={filtersConfig}
+                setFiltersConfig={setFiltersConfig}
+            />
             <div className="cards-container">
                 {displayedBooks.map(
                     (book) => {

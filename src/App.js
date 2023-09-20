@@ -7,20 +7,20 @@ import { Cart } from './components/Cart/Cart';
 import { Footer } from "./components/Footer/Footer";
 import { Modal } from './components/Modal/Modal';
 import { BOOKS } from "./components/BOOKS";
+import { INITIAL_FILTERS_CONFIG } from "./components/constants";
 
 function App() {
     const [ isModalActive, setIsModalActive ] = useState(false);
     const [ books, setBooks ] = useState(BOOKS);
     const [ cartBooks, setCartBooks ] = useState(JSON.parse(localStorage.getItem("cartBooks")) ?? []);
     const [ cartSum, setCartSum ] = useState(localStorage.getItem("cartSum") ?? 0);
-    const [ displayedBooks, setDisplayedBooks ] = useState(JSON.parse(localStorage.getItem("displayedBooks"))  ?? BOOKS);
+    const [ displayedBooks, setDisplayedBooks ] = useState(BOOKS);
+    const [ filtersConfig, setFiltersConfig ] = useState(INITIAL_FILTERS_CONFIG);
 
     useEffect(() => {
         const handleUnload = () => {
-            localStorage.setItem("displayedBooks", JSON.stringify(displayedBooks));
             localStorage.setItem("cartBooks", JSON.stringify(cartBooks));
             localStorage.setItem("cartSum", cartSum);
-          
         }
     
         window.addEventListener('beforeunload', handleUnload);
@@ -28,7 +28,7 @@ function App() {
         return () => {
             window.removeEventListener('beforeunload', handleUnload);
         }
-    }, [cartBooks, displayedBooks]);
+    }, [cartBooks, cartSum]);
     
 
     const calculateSum = (booksList) => {
@@ -40,25 +40,24 @@ function App() {
     }
 
     const buttonHandler = (id, isToggling) => {
-
         const updateBooks = (arr) => {
             let newBooks = [...arr];
-            newBooks = newBooks.map(book =>
-                {
-                    if (book.id === id) {
-                        let newBook = {...book};
-                        newBook.isChosen = isToggling ? !newBook.isChosen : false;
-                        return newBook;
-                    } else return book;
-                });
-                return newBooks;
+
+            newBooks = newBooks.map(book => {
+                if (book.id === id) {
+                    let newBook = {...book};
+                    newBook.isChosen = isToggling ? !newBook.isChosen : false;
+                    return newBook;
+                } else return book;
+            });
+
+            return newBooks;
         }
 
         const updatedBooks = updateBooks(books);
 
         setBooks(updatedBooks);
         setDisplayedBooks(updateBooks(displayedBooks));
-        
         setCartBooks(updatedBooks.filter(book => book.isChosen));
         calculateSum(updatedBooks);
     }
@@ -72,8 +71,30 @@ function App() {
             />
             <div className='main'>
                 <Routes>
-                    <Route path="/" element={<Catalog books={books} buttonHandler={buttonHandler} displayedBooks={displayedBooks} setDisplayedBooks={setDisplayedBooks} />} />
-                    <Route path="/cart" element={<Cart cartBooks={cartBooks} cartSum={cartSum} buttonHandler={buttonHandler}/>} />
+                    <Route 
+                        path="/" 
+                        element={
+                            <Catalog 
+                                books={books} 
+                                buttonHandler={buttonHandler} 
+                                displayedBooks={displayedBooks} 
+                                setDisplayedBooks={setDisplayedBooks} 
+                                filtersConfig={filtersConfig} 
+                                setFiltersConfig={setFiltersConfig}
+                            />
+                        } 
+                    />
+
+                    <Route 
+                        path="/cart" 
+                        element={
+                            <Cart 
+                                cartBooks={cartBooks} 
+                                cartSum={cartSum} 
+                                buttonHandler={buttonHandler}
+                            />
+                        } 
+                    />
                 </Routes>
             </div>
             <Footer />
